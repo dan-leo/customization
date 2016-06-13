@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# @author: Daniel Robinson
+# @email: d7robin@gmail.com
+
+# install zsh from http://ohmyz.sh/
+# add chucknorris plugin in ~/.zshrc like plugins=(git chucknorris)
+# cp this to /etc/update-motd.d/98-chuck
+# chmod +x 98-chuck
+# log into this terminal again
+#
+# ** if it does not work, add this line to the bottom of ~/.zshrc
+# /etc/update-motd.d/./98-chuck
+
+echo
+fortune -a $DIR
+fortune -a ~/.oh-my-zsh/plugins/chucknorris/fortunes | cowthink
+echo
