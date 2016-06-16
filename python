@@ -1,0 +1,2 @@
+# run unittests in a directory
+> python -m unittest discover .
