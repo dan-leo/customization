@@ -1,1 +1,6 @@
+# find text in files
 grep -rnw '/etc' -e "random line"
+
+# find file version
+apt-cache policy raspi-config
+
