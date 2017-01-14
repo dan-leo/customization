@@ -4,3 +4,4 @@ grep -rnw '/etc' -e "random line"
 # find file version
 apt-cache policy raspi-config
 
+docker run -it -v ./src:/www node bash
