@@ -5,3 +5,25 @@ grep -rnw '/etc' -e "random line"
 apt-cache policy raspi-config
 
 docker run -it -v ./src:/www node bash
+
+##########################################################
+
+sudo ip addr add 169.254.169.254/8 dev lo
+It will just add a new IP to the interface, no need for aliasing with :0, :1, etc. Note this is going to be lost after a reboot.
+
+And to quickly emulate the metadata service you can use netcat like this:
+
+while true; do sudo nc -l 169.254.169.254 80 <<< '"region" : "eu-west-1"'; test $? != 0 && break; done
+
+GET /latest/dynamic/instance-identity/document HTTP/1.1
+User-Agent: curl/7.38.0
+Host: 169.254.169.254
+Accept: */*
+
+This will give you the region when asking like this:
+
+curl -s http://169.254.169.254/latest/dynamic/instance-identity/document
+
+"region" : "eu-west-1"
+
+##########################################################
